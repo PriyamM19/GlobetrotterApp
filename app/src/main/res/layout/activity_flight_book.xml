@@ -305,7 +305,7 @@
                 app:layout_constraintTop_toBottomOf="@id/arrivalTime2" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/klm"
                 android:layout_width="122dp"
                 android:layout_height="41dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -405,7 +405,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="05:00 PM"
+                android:text="02:30 PM"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/departureAirport3" />
 
@@ -431,7 +431,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="09:45 PM +"
+                android:text="08:20 PM +"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/arrivalAirport3" />
 
@@ -449,7 +449,7 @@
                 app:layout_constraintTop_toBottomOf="@id/arrivalTime3" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/ac"
                 android:layout_width="125dp"
                 android:layout_height="57dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -547,7 +547,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="02:30 PM"
+                android:text="07:00 PM"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/departureAirport4" />
 
@@ -573,7 +573,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="08:20 PM +"
+                android:text="09:45 PM +"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/arrivalAirport4" />
 
@@ -591,7 +591,7 @@
                 app:layout_constraintTop_toBottomOf="@id/arrivalTime4" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/emi"
                 android:layout_width="125dp"
                 android:layout_height="47dp"
                 app:layout_constraintBottom_toBottomOf="parent"

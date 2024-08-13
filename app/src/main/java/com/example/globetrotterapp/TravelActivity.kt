@@ -42,8 +42,8 @@ class TravelActivity : AppCompatActivity() {
 //        Log.d("from", fromLocations.toString())
 //        Log.d("from", toLocations.toString())
 
-        val fromLocations = arrayOf("India (IND)","United States of America (USA)","Canada (CAN)","Germany (DEU)","Japan (JPN)","France (FRA)","Italy (ITA)", "Singapore (SGP)","China (PEK)","Bangladesh (DAC)","Maldives (MLE)", "Turkey (IST)")
-        val toLocations = arrayOf("India (IND)","United States of America (USA)","Canada (CAN)","Germany (DEU)","Japan (JPN)","France (FRA)","Italy (ITA)", "Singapore (SGP)","China (PEK)","Bangladesh (DAC)","Maldives (MLE)", "Turkey (IST)")
+        val fromLocations = arrayOf("India (IND)","America (USA)","Canada (CAN)","Germany (DEU)","Japan (JPN)","France (FRA)","Italy (ITA)", "Singapore (SGP)","China (PEK)","Bangladesh (DAC)","Maldives (MLE)", "Turkey (IST)")
+        val toLocations = arrayOf("India (IND)","America (USA)","Canada (CAN)","Germany (DEU)","Japan (JPN)","France (FRA)","Italy (ITA)", "Singapore (SGP)","China (PEK)","Bangladesh (DAC)","Maldives (MLE)", "Turkey (IST)")
         // Create ArrayAdapter using the string arrays and a default spinner layout
         val fromAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, fromLocations)
         val toAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, toLocations)

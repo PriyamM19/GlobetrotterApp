@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="05:05 AM"
+                android:text="5:05AM"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -174,7 +174,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
-                android:id="@+id/ai"
+                android:id="@+id/planeIcon"
                 android:layout_width="123dp"
                 android:layout_height="31dp"
                 app:layout_constraintBottom_toBottomOf="parent"

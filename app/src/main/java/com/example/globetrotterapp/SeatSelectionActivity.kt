@@ -19,6 +19,10 @@ class SeatSelectionActivity : AppCompatActivity() {
     private lateinit var firstName: String
     private lateinit var fromLocation: String
     private lateinit var toLocation: String
+    private lateinit var departureTime: String
+    private lateinit var arrivalTime: String
+    private var iconResourceId: Int = -1
+
 
 
 
@@ -57,9 +61,13 @@ class SeatSelectionActivity : AppCompatActivity() {
         val button6F = findViewById<Button>(R.id.sixf)
         val confirmButton = findViewById<Button>(R.id.book)
 
-         fromLocation = intent.getStringExtra("from")?:""
-         toLocation = intent.getStringExtra("to")?:""
-         firstName = intent.getStringExtra("firstName")?:""
+        fromLocation = intent.getStringExtra("from")?:""
+        toLocation = intent.getStringExtra("to")?:""
+        firstName = intent.getStringExtra("firstName")?:""
+        departureTime = intent.getStringExtra("departureTime") ?: ""
+        arrivalTime = intent.getStringExtra("arrivalTime") ?: ""
+        iconResourceId = intent.getIntExtra("iconResourceId", -1)
+
 
         // Set up click listeners for the buttons
         button1A.setOnClickListener {
@@ -190,36 +198,40 @@ class SeatSelectionActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-     fun navigateToNextActivity(seatNumber: String) {
-         var databaseReference = FirebaseDatabase.getInstance().getReference().child("FlightsBooking")
-         val booking = FlightsBooking(firstName,
-             intent.getStringExtra("email").toString(), fromLocation, toLocation,seatNumber)
-         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-             override fun onDataChange(@NonNull snapshot: DataSnapshot) {
-                 // Example navigation to another activity
-                 val intent = Intent(baseContext, BoardingPassActivity::class.java).apply {
-                     putExtra("from", fromLocation)
-                     putExtra("to", toLocation)
-                     putExtra("firstName", firstName)
-                     putExtra("seatNumber",seatNumber)
-                     putExtra("email", intent.getStringExtra("email"))
-                     putExtra("name", intent.getStringExtra("name"))
-                 }
-                 intent.flags =
-                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                 startActivity(intent)
-                 finish()
-             }
+    fun navigateToNextActivity(seatNumber: String) {
+        var databaseReference = FirebaseDatabase.getInstance().getReference().child("FlightsBooking")
+        val booking = FlightsBooking(firstName,
+            intent.getStringExtra("email").toString(), fromLocation, toLocation,seatNumber)
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(@NonNull snapshot: DataSnapshot) {
+                // Example navigation to another activity
+                val intent = Intent(baseContext, BoardingPassActivity::class.java).apply {
+                    putExtra("from", fromLocation)
+                    putExtra("to", toLocation)
+                    putExtra("firstName", firstName)
+                    putExtra("seatNumber",seatNumber)
+                    putExtra("departureTime", departureTime)
+                    putExtra("arrivalTime", arrivalTime)
+                    putExtra("email", intent.getStringExtra("email"))
+                    putExtra("name", intent.getStringExtra("name"))
+                    putExtra("iconResourceId", iconResourceId) // Pass the icon resource ID to the next activity
 
-             override fun onCancelled(@NonNull error: DatabaseError) {
-                 // if the data is not added or it is cancelled then
-                 // we are displaying a failure toast message.
-                 Toast.makeText(baseContext, "Fail to add data $error", Toast.LENGTH_SHORT)
-                     .show()
-             }
-         })
+                }
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
 
-         databaseReference.push().setValue(booking)
+            override fun onCancelled(@NonNull error: DatabaseError) {
+                // if the data is not added or it is cancelled then
+                // we are displaying a failure toast message.
+                Toast.makeText(baseContext, "Fail to add data $error", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        })
+
+        databaseReference.push().setValue(booking)
 
 
     }

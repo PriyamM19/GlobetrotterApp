@@ -10,7 +10,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
-import android.widget.LinearLayout
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,21 +32,35 @@ class BoardingPassActivity : AppCompatActivity() {
         val seatNumber = intent.getStringExtra("seatNumber")?:""
         val passengerName = intent.getStringExtra("firstName")?:"" // Retrieve this from wherever it was saved
         val gateNumber = "A6"
+        val departureTime = intent.getStringExtra("departureTime") ?: ""
+        val arrivalTime = intent.getStringExtra("arrivalTime") ?: ""
+
+        val iconResourceId = intent.getIntExtra("iconResourceId", -1)
 
         // Initialize TextViews
         val seatNumberTextView = findViewById<TextView>(R.id.seatnumber)
         val passengerNameTextView = findViewById<TextView>(R.id.pname)
         val flightFromTextView = findViewById<TextView>(R.id.departureAirport1)
         val flightToTextView = findViewById<TextView>(R.id.arrivalAirport1)
+        val departureTimeTextView = findViewById<TextView>(R.id.departureTime1)
+        val arrivalTimeTextView = findViewById<TextView>(R.id.arrivalTime1)
         val gateNumberTextView = findViewById<TextView>(R.id.gatenumber)
-        val cardView = findViewById<LinearLayout>(R.id.boardingPassLv)
+        val cardView = findViewById<CardView>(R.id.cardView1)
+        val airlineIconImageView = findViewById<ImageView>(R.id.airlineIconImageView)
 
         // Set values
         seatNumberTextView.text = seatNumber
         passengerNameTextView.text = passengerName
         flightFromTextView.text = intent.getStringExtra("from")?:""
         flightToTextView.text = intent.getStringExtra("to")?:""
+        departureTimeTextView.text = departureTime
+        arrivalTimeTextView.text = arrivalTime
         gateNumberTextView.text = gateNumber
+
+        if (iconResourceId != -1) {
+            airlineIconImageView.setImageResource(iconResourceId)
+        }
+
 
         // Set up click listener for the download button
         val downloadButton = findViewById<Button>(R.id.shareBtn)
